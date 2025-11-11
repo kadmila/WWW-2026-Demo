@@ -80,4 +80,5 @@ Thank you.
 # Limitations
 
 As NAT traversal itself is not our main research interest, we only tested our implementation without NAT, with each peer allocated a static IP.
-It is highly likely that peers behind different NAT device will not be able to connect each other.
+It is highly likely that peers behind different NAT device will not be able to connect each other in current implemention.
+NAT traversal between QUIC hosts is trivial; QUIC allows multiple connections between two hosts.
