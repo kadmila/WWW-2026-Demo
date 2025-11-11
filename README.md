@@ -23,7 +23,9 @@ This section explains how you can build & contribute to this project.
 To build the binaries, you need
 * go version go1.24.3 windows/amd64
 * visual studio 2022 with C# .net8.0 and windows dev package.
-* unity 3D 2022.3.40f1
+* unity 3D 2022.3 with Windows Build Support (IL2CPP)
+* Runtime OBJ Importer package by Dummiesman from Unity Asset Store
+* Input System package from Unity Registry
 
 ## Overview
 
@@ -43,19 +45,23 @@ The codes are only for reference.
 
 Before starting the project setup, you must follow the initial setup procedure below.
 1) In visual studio C#, install the latest version of Protobuf and ClearScript addons.
-2) Create a Unity 3D project named "AbyssUI", in the project root directory. Also, you need "AbyssUIBuild" folder in the project root directory, but this is also created as default when you build the unity project.
-3) In the Unity project, install ObjImport package from unity store (free).
+2) Create a Unity 3D project named "AbyssUI", in the project root directory. Also, you need "AbyssUIBuild" folder in the project root directory, but this will be also created as default when you build the unity project.
+3) In the Unity project, install Runtime OBJ Importer package from unity store (free), and also import Input System package.
+4) Close the Unity project, and open powershell in project root directory. Run ./import_unity.ps1. This copies unity project codes from the abyss_unity folder to the AbyssUI unity project.
+5) Run ./quick_rebuild.ps1 two times. The second run should succeed without any errors.
 
-In powershell, run ./import_unity.ps1.
-This copies unity project codes from the abyss_unity folder to the AbyssUI unity project.
+Now, we need to do an inconvence,
+5) Create a temporary Visual Studio C# project in any directory (outside the project).
+6) Install "Protobuf by Google" Nuget package.
+7) Copy the contents of Plugins/ folder into ./AbyssUI/Assets/Plugins. This should include Google.Protobuf.dll
 
-Then, run ./quick_rebuild.ps1.
+8) Open the unity project. The unity editor should start withour an error (only warnings in the editor Debug Console).
+9) Open Scenes/SampleScene, which will show an UI with two address bars.
+10) Press "Play" button, and you should be able to write in the address bars.
+11) Enter "https://minwoowebeng.github.io" in the top bar, which should load a world with a night city dummy skybox. Use WASDQZ for movement.
+12) Leave play mode, and build unity project. Ensure you selected build directory to AbyssUIBuild.
 
-When build completes, open the unity project, and build the project.
-Ensure the project is built on AbyssUIBuild folder in the project root directory.
-
-Then, run ./quick_rebuild two times.
-The second run must not print any errors.
+Then, go to *How to Run* section.
 
 **Warning: The AbyssUI unity project is ignored in the git repository**
 
@@ -66,7 +72,7 @@ To change the list of targets to be synced with git, the ./export_unity.ps1 and 
 ## Quick ReBuild
 
 In powershell, run ./quick_rebuild.ps1 to rebuild the whole project except for the unity project, which has to be manually built within unity editor.
-To partially build abyss_core or abyss_engine, you may run ./build_dll.ps1 (in ./abyss_core), or ./build_debug.ps1 (in ./abyss_engine).
+To partially build abyss_core or abyss_engine, you may run ./build_dll_debug.ps1 (in ./abyss_core), or ./build_debug.ps1 (in ./abyss_engine).
 
 If you find any problem building, please let us know.
 Thank you.
