@@ -67,7 +67,7 @@ Then, go to *How to Run* section.
 
 To push changes in the AbyssUI unity project, you must manually run ./export_unity.ps1.
 This copies codes from AbyssUI project to ./abyss_unity folder.
-To change the list of targets to be synced with git, the ./export_unity.ps1 and ./import_unity.ps1 should be edited.
+Edit ./export_unity.ps1 and ./import_unity.ps1 on disposal.
 
 ## Quick ReBuild
 
