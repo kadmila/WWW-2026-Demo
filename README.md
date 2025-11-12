@@ -51,7 +51,6 @@ Before starting the project setup, you must follow the initial setup procedure b
 5) Run ./quick_rebuild.ps1 two times. The second run should succeed without any errors.
 
 Now, we need to do an inconvence,
-
 6) Create a temporary Visual Studio C# project in any directory (outside the project).
 7) Install "Protobuf by Google" Nuget package.
 8) Copy the contents of Plugins/ folder into ./AbyssUI/Assets/Plugins. This should include Google.Protobuf.dll
